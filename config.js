@@ -17,6 +17,7 @@ config = {
         },
         from: '"myNotifyMail" <myNotifyMail@self.com>'
     },
+    port: 10001
 };
 
 try {

@@ -12,20 +12,12 @@ var mailOptions = {
     to: 'oregami@163.com', // list of receivers
     subject: 'ipchanged', // Subject line
     text: 'Hello world ?', // plain text body
-    html: '<b>Hello world ?</b>' // html body
 };
-
-
-// send mail with defined transport object
-transporter.sendMail(mailOptions);
 
 
 app.set('trust proxy', 1);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
-function sendEvent(obj) {
-}
 
 function dateFormat (format,date) {
     date instanceof Date||(date=new Date(date));
@@ -50,7 +42,8 @@ function dateFormat (format,date) {
 
 
 app.all('/', function (req, res) {
-    res.send('ok')
+    mailOptions.text = req.query.text || mailOptions.text;
+    transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(res.send);
 });
 
 app.listen(config.port);
