@@ -1,2 +1,2 @@
-BUILD_TARGET_NAME=notifyservice
+BUILD_TARGET_NAME=notifymicroservice
 docker build -t $BUILD_TARGET_NAME .
