@@ -1,2 +1,2 @@
 # notifyMicroService
-notify micro service for email and apns 
+notify micro service for email and iOS push

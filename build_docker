@@ -1,0 +1,2 @@
+BUILD_TARGET_NAME=notifyservice
+docker build -t $BUILD_TARGET_NAME .

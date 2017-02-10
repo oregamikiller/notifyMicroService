@@ -1,0 +1,23 @@
+{
+  "name": "notifymicroservice",
+  "version": "1.0.0",
+  "description": "notify service include email and iOS push",
+  "repository" :
+  { "type" : "git",
+    "url" : "git@github.com:oregamikiller/notifyMicroService.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "oregami",
+  "license": "MIT",
+  "dependencies": {
+    "apn": "^2.1.2",
+    "bluebird": "^3.4.7",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "lodash": "^4.15.0",
+    "nodemailer": "^3.0.2"
+  }
+}
