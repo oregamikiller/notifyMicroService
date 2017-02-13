@@ -11,7 +11,7 @@ var mailOptions = {
     from: config.mail.from, // sender address
     to: 'oregami@163.com', // list of receivers
     subject: 'ipchanged', // Subject line
-    text: 'Hello world ?', // plain text body
+    text: 'Hello world ?'// plain text body
 };
 
 
