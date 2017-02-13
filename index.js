@@ -43,7 +43,7 @@ function dateFormat (format,date) {
 
 app.all('/', function (req, res) {
     mailOptions.text = req.query.text || mailOptions.text;
-    transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(res.send);
+    transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(console.log);
 });
 
 app.listen(config.port);
