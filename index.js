@@ -43,11 +43,12 @@ function dateFormat (format,date) {
 
 app.all('/', function (req, res) {
     mailOptions.text = req.query.text || mailOptions.text;
+    mailOptions.to = req.query.to || mailOptions.to;
     transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(console.log);
 });
 
 app.listen(config.port);
-console.log("Server is listening");
+console.log("Server is listening: " + config.port);
 
 
 process.on("uncaughtException", function (err) {
