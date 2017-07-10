@@ -6,15 +6,6 @@ var app        = require('express')(),
     _          = require('lodash'),
     transporter = nodemailer.createTransport(config.mail.options);
 
-
-var mailOptions = {
-    from: config.mail.from, // sender address
-    to: 'oregami@163.com', // list of receivers
-    subject: 'ipchanged', // Subject line
-    text: 'Hello world ?'// plain text body
-};
-
-
 app.set('trust proxy', 1);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -42,9 +33,19 @@ function dateFormat (format,date) {
 
 
 app.all('/', function (req, res) {
-    mailOptions.text = req.query.text || mailOptions.text;
-    mailOptions.to = req.query.to || mailOptions.to;
-    transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(console.log);
+    var mailOptions = {
+        from: config.mail.from, // sender address
+        to: 'oregami@163.com', // list of receivers
+        subject: 'ipchanged', // Subject line
+        text: 'Hello world ?'// plain text body
+    };
+    if (req.query.text) {
+        mailOptions.text = req.query.text;
+        mailOptions.to = req.query.to || mailOptions.to;
+        transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(console.log);
+    } else {
+        res.send('no text');
+    }
 });
 
 app.listen(config.port);
