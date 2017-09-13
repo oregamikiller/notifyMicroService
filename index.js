@@ -41,7 +41,11 @@ app.all('/', function (req, res) {
     };
     if (req.query.text) {
         mailOptions.text = req.query.text;
+        if (req.query.to && req.query.to.contains(',')) {
+            req.query.to = req.query.to.split(',')
+        }
         mailOptions.to = req.query.to || mailOptions.to;
+        mailOptions.subject = req.query.subject || mailOptions.subject;
         transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(console.log);
     } else {
         res.send('no text');
