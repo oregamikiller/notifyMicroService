@@ -41,7 +41,7 @@ app.all('/', function (req, res) {
     };
     if (req.query.text) {
         mailOptions.text = req.query.text;
-        if (req.query.to && req.query.to.contains(',')) {
+        if (req.query.to && req.query.to.indexOf(',') !== -1) {
             req.query.to = req.query.to.split(',')
         }
         mailOptions.to = req.query.to || mailOptions.to;
