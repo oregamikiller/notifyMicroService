@@ -46,7 +46,9 @@ app.all('/', function (req, res) {
         }
         mailOptions.to = req.query.to || mailOptions.to;
         mailOptions.subject = req.query.subject || mailOptions.subject;
-        transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(console.log);
+        transporter.sendMail(mailOptions).then(() => res.send('ok')).catch(function(){
+            res.send('err');
+        });
     } else {
         res.send('no text');
     }
